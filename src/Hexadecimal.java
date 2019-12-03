@@ -111,7 +111,7 @@ public class Hexadecimal extends UserInterface {
 			{
 				try {
 					calc.numberPressed(Integer.parseInt(command));
-				} catch (NumberFormatException e) {
+				} catch (NumberFormatException | StackUnderflow | IncorrectString e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -124,8 +124,18 @@ public class Hexadecimal extends UserInterface {
 				     command.equals("F")) 
 			{
 				int hexNum = Integer.parseInt(command, 16);
-				calc.numberPressed(hexNum / 10);
-				calc.numberPressed(hexNum % 10);
+				try {
+					calc.numberPressed(hexNum / 10);
+				} catch (StackUnderflow | IncorrectString e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					calc.numberPressed(hexNum % 10);
+				} catch (StackUnderflow | IncorrectString e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		else {
@@ -141,7 +151,12 @@ public class Hexadecimal extends UserInterface {
 			    command.equals("9")) 
 			{
 				int number = Integer.parseInt(command);
-				calc.numberPressed(number);
+				try {
+					calc.numberPressed(number);
+				} catch (StackUnderflow | IncorrectString e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		

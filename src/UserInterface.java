@@ -114,7 +114,12 @@ public class UserInterface
                 command.equals("9")) 
         {
             int number = Integer.parseInt(command);
-            calc.numberPressed(number);
+            try {
+				calc.numberPressed(number);
+			} catch (StackUnderflow | IncorrectString e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         else if(command.equals("+")) {
             calc.plus();
