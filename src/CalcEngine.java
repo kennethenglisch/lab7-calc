@@ -64,14 +64,14 @@ public class CalcEngine {
 	 * @param number The number pressed on the calculator.
 	 */
 	public void numberPressed(int number) {
-		if (buildingDisplayValue) {
-			// Incorporate this digit.
-			displayValue = displayValue + number;
-		} else {
-			// Start building a new number.
+//		if (buildingDisplayValue) {
+//			// Incorporate this digit.
+//			displayValue = displayValue + number;
+//		} else {
+//			// Start building a new number.
 			displayValue += number;
-			buildingDisplayValue = true;
-		}
+//			buildingDisplayValue = true;
+//		}
 	}
 
 	/**
