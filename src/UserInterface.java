@@ -15,11 +15,9 @@ public class UserInterface
         implements ActionListener
 {
     protected CalcEngine calc;
-    private boolean showingAuthor;
 
     protected JFrame frame;
     protected JTextField display;
-    private JLabel status;
 
     /**
      * Create a user interface.
@@ -28,7 +26,6 @@ public class UserInterface
     public UserInterface(CalcEngine engine)
     {
         calc = engine;
-        showingAuthor = true;
         makeFrame();
         frame.setVisible(true);
     }
@@ -60,31 +57,26 @@ public class UserInterface
         addButton(buttonPanel, "7");
         addButton(buttonPanel, "8");
         addButton(buttonPanel, "9");
-        addButton(buttonPanel, "C");
-
+        addButton(buttonPanel, "AC");
+        
         addButton(buttonPanel, "4");
         addButton(buttonPanel, "5");
         addButton(buttonPanel, "6");
-        addButton(buttonPanel, "?");
-
+        
+        addButton(buttonPanel, "÷");
+        
         addButton(buttonPanel, "1");
         addButton(buttonPanel, "2");
         addButton(buttonPanel, "3");
-        addButton(buttonPanel, "*");
-
-        // JLabel was only a placeholder, so we omitted it for the new operator
-        //buttonPanel.add(new JLabel(" "));
-
+        
+        addButton(buttonPanel, "x");
+        
         addButton(buttonPanel, "0");
         addButton(buttonPanel, "+");
         addButton(buttonPanel, "-");
         addButton(buttonPanel, "=");
-        addButton(buttonPanel, "/");
 
         contentPane.add(buttonPanel, BorderLayout.CENTER);
-
-        status = new JLabel(calc.getAuthor());
-        contentPane.add(status, BorderLayout.SOUTH);
 
         frame.pack();
     }
@@ -110,7 +102,7 @@ public class UserInterface
     {
         String command = event.getActionCommand();
 
-        if(command.equals("0") ||
+        if(		command.equals("0") ||
                 command.equals("1") ||
                 command.equals("2") ||
                 command.equals("3") ||
@@ -119,7 +111,8 @@ public class UserInterface
                 command.equals("6") ||
                 command.equals("7") ||
                 command.equals("8") ||
-                command.equals("9")) {
+                command.equals("9")) 
+        {
             int number = Integer.parseInt(command);
             calc.numberPressed(number);
         }
@@ -140,16 +133,13 @@ public class UserInterface
 				e.printStackTrace();
 			}
         }
-        else if(command.equals("C")) {
+        else if(command.equals("AC")) {
             calc.clear();
         }
-        else if(command.equals("?")) {
-            showInfo();
-        }
-        else if(command.equals("*")) {
+        else if(command.equals("x")) {
             calc.mult();
         }
-        else if (command.equals("/")) {
+        else if (command.equals("÷")) {
 			calc.div();
 			
 		}
@@ -166,18 +156,5 @@ public class UserInterface
         display.setText("" + calc.getDisplayValue());
     }
 
-    /**
-     * Toggle the info display in the calculator's status area between the
-     * author and version information.
-     */
-    private void showInfo()
-    {
-        if(showingAuthor)
-            status.setText(calc.getVersion());
-        else
-            status.setText(calc.getAuthor());
-
-        showingAuthor = !showingAuthor;
-    }
 }
 
