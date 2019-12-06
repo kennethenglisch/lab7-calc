@@ -2,25 +2,31 @@
 
 public class HexCalc extends CalcEngine{
 	
-	public void numberPressed(String hex) {
+	public void numberPressed(String hex) throws StackUnderflow, IncorrectString {
 		switch (hex) {
 		case "A":
-			numberPressed(10);
+			numberPressed(1);
+			numberPressed(0);
 			break;
 		case "B":
-			numberPressed(11);
+			numberPressed(1);
+			numberPressed(1);
 			break;
 		case "C":
-			numberPressed(12);
+			numberPressed(1);
+			numberPressed(2);
 			break;
 		case "D":
-			numberPressed(13);
+			numberPressed(1);
+			numberPressed(3);
 			break;
 		case "E":
-			numberPressed(14);
+			numberPressed(1);
+			numberPressed(4);
 			break;
 		case "F":
-			numberPressed(15);
+			numberPressed(1);
+			numberPressed(5);
 			break;
 
 		default:
@@ -28,18 +34,18 @@ public class HexCalc extends CalcEngine{
 		}
 	}
 	
-	@Override
-	public void numberPressed(int number) {
-		if(buildingDisplayValue) {
-            // Incorporate this digit.
-            displayValue = displayValue + number;
-        }
-        else {
-            // Start building a new number.
-            displayValue += number;
-            buildingDisplayValue = true;
-        }
-	}
+//	@Override
+//	public void numberPressed(int number) {
+//		if(buildingDisplayValue) {
+//            // Incorporate this digit.
+//            displayValue = displayValue + number;
+//        }
+//        else {
+//            // Start building a new number.
+//            displayValue += number;
+//            buildingDisplayValue = true;
+//        }
+//	}
 	
 	public String toHex(String numberString){
         String hexNumber = "";
