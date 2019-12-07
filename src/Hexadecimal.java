@@ -190,8 +190,6 @@ public class Hexadecimal extends UserInterface {
 	}
 
 	public void redisplay() {
-		String str = calc.getDisplayValue();
-		
 		if (jBox.getState()) {
 			if (calc.calculated) 
 			{
