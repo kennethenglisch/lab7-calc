@@ -102,19 +102,7 @@ public class CalcEngine {
 	
 	public void hexPressed(String c) 
 	{
-		if (hexDisplayValue.equals("A") ||
-			hexDisplayValue.equals("B") ||
-			hexDisplayValue.equals("C") ||
-			hexDisplayValue.equals("D") ||
-			hexDisplayValue.equals("E") ||
-			hexDisplayValue.equals("F")) 
-		{
-			hexDisplayValue = c;
-		}
-		else 
-		{
 			hexDisplayValue += c;
-		}
 	}
 	
 	public String getHexDisplayValue() 
@@ -163,6 +151,7 @@ public class CalcEngine {
 		result = 0;
 		dV = "";
 		calculated = false;
+		hexDisplayValue = "";
 	}
 	
 	/**
@@ -180,6 +169,7 @@ public class CalcEngine {
 			
 			lastOperator = '=';
 			buildingDisplayValue = false;
+			hexDisplayValue = "";
 	}
 
 	/**
