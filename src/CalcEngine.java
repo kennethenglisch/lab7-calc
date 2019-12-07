@@ -164,9 +164,7 @@ public class CalcEngine {
 			calculated = true;
 			String display = checkResult(result);
 			displayValue = Integer.toString(result);
-			
 			internalDisplayValue = display;
-			
 			lastOperator = '=';
 			buildingDisplayValue = false;
 			hexDisplayValue = "";
