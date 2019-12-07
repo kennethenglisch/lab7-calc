@@ -192,20 +192,12 @@ public class Hexadecimal extends UserInterface {
 	public void redisplay() {
 		if (jBox.getState()) {
 			if (calc.calculated) 
-			{
 				display.setText("" + Integer.toHexString(Integer.parseInt(calc.getDisplayValue())).toUpperCase());
-			}
+			
 			else if (!calc.calculated) 
-			{
 				display.setText("" + calc.getHexDisplayValue());
-			}
-			
-			
 		} 
 		else 
-		{
 			display.setText("" + calc.getDisplayValue());
-		}
 	}
-
 }
