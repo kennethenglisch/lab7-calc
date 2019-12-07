@@ -115,6 +115,7 @@ public class Hexadecimal extends UserInterface {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				calc.hexPressed(command);
 			}
 			else if (command.equals("A") || 
 				     command.equals("B") || 
@@ -136,6 +137,7 @@ public class Hexadecimal extends UserInterface {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				calc.hexPressed(command);
 			}
 		}
 		else {
@@ -188,9 +190,22 @@ public class Hexadecimal extends UserInterface {
 	}
 
 	public void redisplay() {
-		if (calc == hexEngine) {
-			display.setText("" + hexEngine.toHex(calc.getDisplayValue()));
-		} else {
+		String str = calc.getDisplayValue();
+		
+		if (jBox.getState()) {
+			if (calc.calculated) 
+			{
+				display.setText("" + Integer.toHexString(Integer.parseInt(calc.getDisplayValue())).toUpperCase());
+			}
+			else if (!calc.calculated) 
+			{
+				display.setText("" + calc.getHexDisplayValue());
+			}
+			
+			
+		} 
+		else 
+		{
 			display.setText("" + calc.getDisplayValue());
 		}
 	}

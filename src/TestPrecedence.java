@@ -39,7 +39,7 @@ class TestPrecedence {
 		
 		// --------- Test 2 | 1*2+3 = 6 ---------
 		
-				hexEngine.numberPressed(1);
+				hexEngine.numberPressed(1); 
 				hexEngine.mult();
 				hexEngine.numberPressed(2);
 				hexEngine.plus();
@@ -143,14 +143,13 @@ class TestPrecedence {
 				hexEngine.numberPressed(3);
 				hexEngine.equals();
 				
-				
 				assertEquals("-1", hexEngine.getDisplayValue());
 		
 		// ------ Check that it is cleared ------
 
 				hexEngine.clear();
 				assertEquals("", hexEngine.getDisplayValue());
-//				
+				
 		// --------- Test 8 | 1*2-3*4 = -10 ---------
 		
 				hexEngine.numberPressed(1);

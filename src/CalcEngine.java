@@ -25,11 +25,14 @@ public class CalcEngine {
 	protected String internalDisplayValue;
 	
 	protected String dV;
-	// The value of an existing left operand.
-	// protected int leftOperand;
 	
 	int temp;
-	/**
+	
+	boolean calculated = false;
+
+	private String hexDisplayValue;
+	
+	/*
 	 * Create a CalcEngine.
 	 */
 	public CalcEngine() {
@@ -85,10 +88,7 @@ public class CalcEngine {
 		if (buildingDisplayValue) 
 		{
 			dV += number;
-			System.out.println(dV);
-			
 			internalDisplayValue = internalDisplayValue.substring(0, internalDisplayValue.length() - 1) + checkResult(Integer.parseInt(dV));
-			
 			displayValue += number;
 		}
 		else 
@@ -97,59 +97,74 @@ public class CalcEngine {
 			dV = Integer.toString(number);
 			internalDisplayValue += number;
 			buildingDisplayValue = true;
-			
-			System.out.println(internalDisplayValue);
 		}
+	}
+	
+	public void hexPressed(String c) 
+	{
+		if (hexDisplayValue.equals("A") ||
+			hexDisplayValue.equals("B") ||
+			hexDisplayValue.equals("C") ||
+			hexDisplayValue.equals("D") ||
+			hexDisplayValue.equals("E") ||
+			hexDisplayValue.equals("F")) 
+		{
+			hexDisplayValue = c;
+		}
+		else 
+		{
+			hexDisplayValue += c;
+		}
+	}
+	
+	public String getHexDisplayValue() 
+	{
+		return hexDisplayValue;
 	}
 
 	/**
 	 * The 'plus' button was pressed.
 	 */
-	public void plus() {
-		displayValue += "+";
-		internalDisplayValue += "+";
-		lastOperator = '+';
-		buildingDisplayValue = false;
-		result = 0;
-		dV = "";
+	public void plus() 
+	{
+		applyOperator('+');
 	}
 
 	/**
 	 * The 'minus' button was pressed.
 	 */
-	public void minus() {
-		displayValue += "-";
-		internalDisplayValue += "-";
-		lastOperator = '-';
-		buildingDisplayValue = false;
-		result = 0;
-		dV = "";
+	public void minus() 
+	{
+		applyOperator('-');
 	}
 
 	/**
 	 * The 'multiply' button was pressed.
 	 */
-	public void mult() {
-		displayValue += "*";
-		internalDisplayValue += "*";
-		lastOperator = '*';
-		buildingDisplayValue = false;
-		result = 0;
-		dV = "";
+	public void mult() 
+	{
+		applyOperator('*');
 	}
 
 	/**
 	 * The 'division' button was pressed.
 	 */
-	public void div() {
-		displayValue += "/";
-		internalDisplayValue += "/";
-		lastOperator = '/';
+	public void div() 
+	{
+		applyOperator('/');
+	}
+
+	public void applyOperator (Character c) 
+	{
+		displayValue += c;
+		internalDisplayValue += c;
+		lastOperator = c;
 		buildingDisplayValue = false;
 		result = 0;
 		dV = "";
+		calculated = false;
 	}
-
+	
 	/**
 	 * The '=' button was pressed.
 	 */
@@ -157,13 +172,11 @@ public class CalcEngine {
 	{
 			String postfix = post.infixToPostfix(internalDisplayValue);
 			result = post.evaluate(postfix);
+			calculated = true;
 			String display = checkResult(result);
 			displayValue = Integer.toString(result);
 			
-//			System.out.println(internalDisplayValue);
 			internalDisplayValue = display;
-//			System.out.println(internalDisplayValue);
-			
 			
 			lastOperator = '=';
 			buildingDisplayValue = false;
@@ -179,6 +192,8 @@ public class CalcEngine {
 		displayValue = "";
 		internalDisplayValue = "";
 		dV = "";
+		calculated = false;
+		hexDisplayValue = "";
 	}
 
 	/**
@@ -187,20 +202,6 @@ public class CalcEngine {
 	public String getTitle() {
 		return "Java Calculator";
 	}
-
-//	/**
-//	 * @return The author of this engine.
-//	 */
-//	public String getAuthor() {
-//		return "David J. Barnes and Michael Kolling";
-//	}
-//
-//	/**
-//	 * @return The version number of this engine.
-//	 */
-//	public String getVersion() {
-//		return "Version 1.0";
-//	}
 
 	/**
 	 * Report an error in the sequence of keys that was pressed.

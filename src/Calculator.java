@@ -7,10 +7,11 @@
  */
 public class Calculator {
 	private CalcEngine engine;
+//	private HexCalc engine;
 	private UserInterface gui;
 	
 	public static void main(String[] args) {
-		Calculator calculator = new Calculator();
+		new Calculator();
 	}
 
 	/**
@@ -18,7 +19,7 @@ public class Calculator {
 	 */
 	public Calculator() {
 		HexCalc hexEngine = new HexCalc();
-		engine = new CalcEngine();
+		engine = new HexCalc();
 		gui = new Hexadecimal(engine, hexEngine);
 	}
 

@@ -1,6 +1,7 @@
 /CalcEngine.class
 /Calculator.class
 /HexCalc.class
+/Hexadecimal$1.class
 /Hexadecimal.class
 /IncorrectString.class
 /Node.class
@@ -11,4 +12,5 @@
 /StackUnderflow.class
 /TestPrecedence.class
 /UserInterface.class
-/Hexadecimal$1.class
+/HexUserInterface$1.class
+/HexUserInterface.class
