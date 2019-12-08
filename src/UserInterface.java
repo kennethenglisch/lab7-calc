@@ -57,7 +57,7 @@ public class UserInterface
         addButton(buttonPanel, "7");
         addButton(buttonPanel, "8");
         addButton(buttonPanel, "9");
-        addButton(buttonPanel, "C");
+        addButton(buttonPanel, "AC");
         
         addButton(buttonPanel, "4");
         addButton(buttonPanel, "5");
@@ -138,7 +138,7 @@ public class UserInterface
 				e.printStackTrace();
 			}
         }
-        else if(command.equals("C")) {
+        else if(command.equals("AC")) {
             calc.clear();
         }
         else if(command.equals("*")) {
