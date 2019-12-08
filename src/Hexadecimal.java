@@ -84,17 +84,6 @@ public class Hexadecimal extends UserInterface {
 	}
 
 	public void actionPerformed(ActionEvent event) {
-//		String command = event.getActionCommand();
-//
-//		super.actionPerformed(event);
-//
-//		if (command.equals("A") || command.equals("B") || command.equals("C") || command.equals("D")
-//				|| command.equals("E") || command.equals("F")) {
-//			String hex = command.toUpperCase();
-//			hexEngine.numberPressed(hex);
-//		}
-//		redisplay();
-		
 		String command = event.getActionCommand();
 
 		if (jBox.getState()) {
